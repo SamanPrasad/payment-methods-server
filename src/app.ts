@@ -14,6 +14,9 @@ app.use(
 
 app.use(express.json());
 
+app.use("/", (req, res) => {
+  res.send("Welcome to Payment Samples...");
+});
 app.use("/payhere", payherRouter);
 
 app.listen(3000, () => {
