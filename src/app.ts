@@ -30,7 +30,7 @@ app.get("/test", (req, res) => {
   res.json(val);
 });
 app.post("/test", (req, res) => {
-  const num = req.body;
+  const { num } = req.body;
   val.push(num);
 });
 
