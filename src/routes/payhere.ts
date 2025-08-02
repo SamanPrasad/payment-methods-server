@@ -23,6 +23,8 @@ router.post("/checkout", (req, res) => {
     .toString()
     .toUpperCase();
 
+  console.log("hash ", hash);
+
   res.json({ hash });
 });
 
