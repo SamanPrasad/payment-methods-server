@@ -1,10 +1,10 @@
-import { Router } from "express";
+import express, { Router } from "express";
 import md5 from "crypto-js/md5";
 import { PayhereCheckout } from "../models/PayhereModel";
 
 const router = Router();
 
-router.post("/checkout", (req, res) => {
+router.post("/checkout", express.json(), (req, res) => {
   const { amount } = req.body;
   console.log(amount);
 
@@ -26,11 +26,15 @@ router.post("/checkout", (req, res) => {
   res.json({ hash });
 });
 
-router.post("/notify", async (req, res) => {
-  const body = req.body;
-  console.log("body values", body);
-  const result = await PayhereCheckout.create({ body });
-  res.json({ data: "success" });
-});
+router.post(
+  "/notify",
+  express.urlencoded({ extended: true }),
+  async (req, res) => {
+    const body = req.body;
+    console.log("body values", body);
+    const result = await PayhereCheckout.create({ body });
+    res.json({ data: "success" });
+  }
+);
 
 export default router;
