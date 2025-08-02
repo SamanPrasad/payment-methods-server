@@ -6,7 +6,6 @@ const router = Router();
 
 router.post("/checkout", (req, res) => {
   const { amount } = req.body;
-  console.log(amount);
 
   let merchantSecret = process.env.MERCHANT_SECRET as string;
   let merchantId = process.env.MERCHANT_ID;
@@ -22,8 +21,6 @@ router.post("/checkout", (req, res) => {
   )
     .toString()
     .toUpperCase();
-
-  console.log("hash ", hash);
 
   res.json({ hash });
 });

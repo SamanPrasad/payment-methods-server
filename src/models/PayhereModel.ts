@@ -6,6 +6,7 @@ const payhereCheckoutSchema = new mongoose.Schema({
   order_id: String,
   payment_id: String,
   method: String,
+  status_code: String,
 });
 
 export const PayhereCheckout =
