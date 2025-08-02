@@ -1,5 +1,6 @@
 import { Router } from "express";
 import md5 from "crypto-js/md5";
+import { PayhereCheckout } from "../models/PayhereModel";
 
 const router = Router();
 
@@ -23,6 +24,12 @@ router.post("/checkout", (req, res) => {
     .toUpperCase();
 
   res.json({ hash });
+});
+
+router.post("/notify", async (req, res) => {
+  const body = req.body;
+  const result = await PayhereCheckout.create({ body });
+  res.json({ data: "success" });
 });
 
 export default router;
