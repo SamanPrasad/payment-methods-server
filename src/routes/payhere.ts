@@ -4,7 +4,7 @@ import { PayhereCheckout } from "../models/PayhereModel";
 
 const router = Router();
 
-router.post("/checkout", express.json(), (req, res) => {
+router.post("/checkout", (req, res) => {
   const { amount } = req.body;
   console.log(amount);
 
