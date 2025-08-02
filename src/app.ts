@@ -32,6 +32,7 @@ app.get("/test", (req, res) => {
 app.post("/test", (req, res) => {
   const { num } = req.body;
   val.push(num);
+  res.json(val);
 });
 
 app.listen(3000, () => {
