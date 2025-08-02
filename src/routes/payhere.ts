@@ -28,6 +28,7 @@ router.post("/checkout", (req, res) => {
 
 router.post("/notify", async (req, res) => {
   const body = req.body;
+  console.log("body values", body);
   const result = await PayhereCheckout.create({ body });
   res.json({ data: "success" });
 });
